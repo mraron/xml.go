@@ -2,7 +2,6 @@ package xmlgo
 
 import (
    "bufio"
-   "os"
    "errors"
    "io"
    "unicode"
