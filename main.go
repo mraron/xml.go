@@ -21,7 +21,7 @@ type XMLTag struct {
 }
 
 type XMLDocument struct {
-   Tags []*XMLTag
+   Tags []XMLTag
 }
 
 func readString(rd *bufio.Reader) ([]rune, error) {
@@ -101,9 +101,9 @@ func Parse(r io.Reader) (*XMLDocument, error) {
    state := 0
 
    doc := &XMLDocument{}
-   doc.Tags = make([]*XMLTag, 0)
+   doc.Tags = make([]XMLTag, 0)
 
-   aktTag := &XMLTag{}
+   aktTag := XMLTag{}
 
    for {
       r, _, err := rd.ReadRune()
@@ -118,7 +118,7 @@ func Parse(r io.Reader) (*XMLDocument, error) {
             return nil, errors.New("syntax error 1")
          }else {
             state ++
-            aktTag = &XMLTag{}
+            aktTag = XMLTag{}
          }
       }else if state == 1 {
          name := ""
