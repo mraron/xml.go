@@ -1,4 +1,4 @@
-package main
+package xmlgo
 
 import (
    "bufio"
@@ -164,18 +164,4 @@ func Parse(r io.Reader) (*XMLDocument, error) {
       }
    }
 
-}
-
-func main() {
-   f, err := os.Open("myformat")
-   if err != nil {
-      panic(err)
-   }
-   d, err := Parse(f)
-   if err != nil {
-      panic(err)
-   }
-   for _, akt := range d.Tags {
-      fmt.Println(akt)
-   }
 }
